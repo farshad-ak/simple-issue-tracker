@@ -1,16 +1,16 @@
 package com.farshad.tracker.simpleissuetracker.issue.story;
 
+import com.farshad.tracker.simpleissuetracker.developer.Developer;
 import com.farshad.tracker.simpleissuetracker.issue.Issue;
 import com.farshad.tracker.simpleissuetracker.issue.IssueTypeEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -28,4 +28,10 @@ public class Story extends Issue {
     private Integer point;
 
     private Integer assignedWeek;
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "developer_id",
+//            foreignKey = @ForeignKey(name = "developer_ID_FK")
+//    )
+//    private Developer developer;
 }
