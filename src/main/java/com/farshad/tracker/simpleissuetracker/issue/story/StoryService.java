@@ -14,7 +14,7 @@ public interface StoryService {
 
      Story add(Story story) ;
 
-     Story save(Story story) ;
+     Story update(Story story) ;
 
      void delete(Long developerId);
 

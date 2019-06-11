@@ -70,7 +70,7 @@ public class StoryController {
 
             try {
                 // Update the product and return an ok response
-                if (storyService.save(p) != null) {
+                if (storyService.update(p) != null) {
                     return ResponseEntity.ok()
                             .location(new URI("/product/" + p.getId()))
                             .eTag(p.getVersion().toString())

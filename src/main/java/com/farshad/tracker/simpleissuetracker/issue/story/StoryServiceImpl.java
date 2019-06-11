@@ -4,6 +4,7 @@ import com.farshad.tracker.simpleissuetracker.base.dto.DeveloperPointsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -31,7 +32,7 @@ public class StoryServiceImpl implements StoryService {
     }
 
     @Override
-    public Story save(Story story) {
+    public Story update(Story story) {
         return storyRepository.save(story);
     }
 
@@ -84,17 +85,16 @@ public class StoryServiceImpl implements StoryService {
     public DeveloperPointsDto getMostAvailableDeveloperIdForStory(Integer week) {
         DeveloperPointsDto developerPoints = null;
         List<Object[]> queryResult = storyRepository.getMostAvailableDeveloperIdForStory(week);
-        if(queryResult.size() > 0) {
+        if (queryResult.size() > 0) {
             Object[] tuple = queryResult.get(0);
 
             developerPoints = new DeveloperPointsDto();
 
             developerPoints.setDeveloperId(((BigInteger) tuple[0]).longValue());
-            if(tuple[1] != null) {
-                developerPoints.setPoints(((BigInteger) tuple[1]).intValue());
-            }
-            else {
-                developerPoints.setPoints(0);
+            if (tuple[1] != null) {
+                developerPoints.setPoints(Long.parseLong(tuple[1].toString()));
+            } else {
+                developerPoints.setPoints(0l);
             }
 
         }

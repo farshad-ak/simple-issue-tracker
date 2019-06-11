@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface StoryRepository extends JpaRepository<Story, Long> {
+
     @Query(value = "from Story story where story.status=2 and assignedWeek is null order by story.point desc")
     public List<Story> getEstimatedStories();
 
