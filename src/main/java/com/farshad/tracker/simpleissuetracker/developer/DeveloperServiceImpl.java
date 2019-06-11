@@ -18,6 +18,12 @@ public class DeveloperServiceImpl implements DeveloperService {
     private DeveloperRepository developerRepository;
 
     @Override
+    public Developer add(String name) {
+        Developer developer = new Developer(name);
+        return developerRepository.save(developer);
+    }
+
+    @Override
     public Developer save(Developer developer) {
         return developerRepository.save(developer);
     }
@@ -47,15 +53,6 @@ public class DeveloperServiceImpl implements DeveloperService {
     developerRepository.deleteById(id);
     }
 
-    @Override
-    public void delete(Developer developer) {
-        developerRepository.delete(developer);
-    }
-
-    @Override
-    public void deleteAll() {
-        developerRepository.deleteAll();
-    }
 
     @Override
     public long count() {

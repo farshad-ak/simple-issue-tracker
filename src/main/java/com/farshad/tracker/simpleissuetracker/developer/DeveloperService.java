@@ -10,6 +10,8 @@ import java.util.Optional;
 
 public interface DeveloperService {
 
+    Developer add(String name);
+
     Developer save(Developer developer);
 
     Optional<Developer> find(Long id);
@@ -22,10 +24,6 @@ public interface DeveloperService {
 
     void delete(Long id);
 
-    void delete(Developer developer);
-
-    void deleteAll();
-
-    long count();
+   long count();
 
 }

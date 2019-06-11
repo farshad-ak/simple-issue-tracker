@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/developer")
 public class DeveloperController {
 
     @Autowired
@@ -26,7 +25,7 @@ public class DeveloperController {
         return developerService.find(id);
     }
 
-    @GetMapping("/developer")
+    @GetMapping("/developers")
     public List<Developer> getAll(){
         return developerService.findAll();
     }
@@ -34,11 +33,6 @@ public class DeveloperController {
     @DeleteMapping("/developer/{id}")
     public void deleteById(@PathVariable(value = "id") Long id){
         developerService.delete(id);
-    }
-
-    @DeleteMapping("/developer")
-    public void deleteAll(){
-        developerService.deleteAll();
     }
 
     @GetMapping("/developer/count")
