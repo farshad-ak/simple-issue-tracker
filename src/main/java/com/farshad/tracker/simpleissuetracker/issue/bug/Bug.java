@@ -1,5 +1,6 @@
 package com.farshad.tracker.simpleissuetracker.issue.bug;
 
+import com.farshad.tracker.simpleissuetracker.issue.Issue;
 import com.farshad.tracker.simpleissuetracker.issue.IssueTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ISSUES")
 @Where(clause = " TYPE = 1")
-public class Bug {
+public class Bug extends Issue {
     @Column(name = "TYPE")
     private Integer issueType = IssueTypeEnum.Bug.getValue();
 
