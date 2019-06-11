@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DeveloperPointsDto {
     private Long developerId;
-    private Integer points;
+    private Long points;
 }
