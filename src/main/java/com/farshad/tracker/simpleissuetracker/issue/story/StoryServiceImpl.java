@@ -4,7 +4,6 @@ import com.farshad.tracker.simpleissuetracker.base.dto.DeveloperPointsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -40,7 +39,6 @@ public class StoryServiceImpl implements StoryService {
     @Override
     public void delete(Long developerId) {
         storyRepository.deleteById(developerId);
-        ;
     }
 
     @Override
