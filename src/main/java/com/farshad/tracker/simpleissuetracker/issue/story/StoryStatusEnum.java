@@ -12,7 +12,7 @@ public enum StoryStatusEnum {
 
     private Integer value;
 
-    private StoryStatusEnum(Integer val) {
+    StoryStatusEnum(Integer val) {
         this.value = val;
     }
 

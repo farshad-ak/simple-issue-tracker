@@ -12,7 +12,7 @@ public enum BugStatusEnum {
 
     private Integer value;
 
-    private BugStatusEnum(Integer val) {
+    BugStatusEnum(Integer val) {
         this.value = val;
     }
 

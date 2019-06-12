@@ -15,7 +15,7 @@ public enum WeeksEnum {
 
     private Integer value;
 
-    private WeeksEnum(Integer value) {
+    WeeksEnum(Integer value) {
         this.value = value;
     }
 

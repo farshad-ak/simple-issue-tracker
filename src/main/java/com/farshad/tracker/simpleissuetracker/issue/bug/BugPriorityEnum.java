@@ -15,7 +15,7 @@ public enum  BugPriorityEnum {
 
     private Integer value;
 
-    private BugPriorityEnum(Integer val) {
+    BugPriorityEnum(Integer val) {
         this.value = val;
     }
 

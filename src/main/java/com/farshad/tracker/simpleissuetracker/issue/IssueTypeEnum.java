@@ -9,7 +9,7 @@ public enum IssueTypeEnum {
 
     private Integer value;
 
-    private IssueTypeEnum(Integer val) {
+    IssueTypeEnum(Integer val) {
         this.value = val;
     }
 

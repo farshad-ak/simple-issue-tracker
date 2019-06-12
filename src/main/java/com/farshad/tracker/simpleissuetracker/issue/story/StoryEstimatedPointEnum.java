@@ -14,7 +14,7 @@ public enum StoryEstimatedPointEnum {
 
     private Integer value;
 
-    private StoryEstimatedPointEnum(Integer val) {
+    StoryEstimatedPointEnum(Integer val) {
         this.value = val;
     }
 
