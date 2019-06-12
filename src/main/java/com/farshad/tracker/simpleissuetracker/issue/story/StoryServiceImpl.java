@@ -28,6 +28,7 @@ public class StoryServiceImpl implements StoryService {
     @Override
     public Story add(Story story) {
         story.setCreationDate(LocalDateTime.now());
+        story.setVersion(1l);
         return storyRepository.save(story);
     }
 
