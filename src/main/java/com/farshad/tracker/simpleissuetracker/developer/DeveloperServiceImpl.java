@@ -1,12 +1,7 @@
 package com.farshad.tracker.simpleissuetracker.developer;
 
-import com.farshad.tracker.simpleissuetracker.developer.Developer;
-import com.farshad.tracker.simpleissuetracker.developer.DeveloperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,43 +12,65 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Autowired
     private DeveloperRepository developerRepository;
 
+    /**
+     * @param name developer name
+     * @return
+     * @inheritDoc
+     */
     @Override
     public Developer add(String name) {
         Developer developer = new Developer(name);
         return developerRepository.save(developer);
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @param developer developer Entity
+     * @return
+     */
     @Override
     public Developer save(Developer developer) {
         return developerRepository.save(developer);
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @param id developer id
+     * @return
+     */
     @Override
     public Optional<Developer> find(Long id) {
         return developerRepository.findById(id);
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @return
+     */
     @Override
     public List<Developer> findAll() {
         return developerRepository.findAll();
     }
 
-    @Override
-    public List<Developer> findAll(Sort sort){
-        return developerRepository.findAll(sort);
-    }
 
-    @Override
-    public Page<Developer> findAll(Pageable pageable){
-        return developerRepository.findAll(pageable);
-    }
-
+    /**
+     * @inheritDoc
+     *
+     * @param id  Developer  id
+     */
     @Override
     public void delete(Long id) {
     developerRepository.deleteById(id);
     }
 
-
+    /**
+     * @inheritDoc
+     *
+     * @return
+     */
     @Override
     public long count() {
         return developerRepository.count();

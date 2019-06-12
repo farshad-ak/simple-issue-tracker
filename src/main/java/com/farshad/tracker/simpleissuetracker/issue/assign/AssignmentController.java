@@ -14,16 +14,32 @@ public class AssignmentController {
     @Autowired
     private AssignmentService assignmentService;
 
+    /**
+     * make assignment action
+     * assign story to developer and week
+     */
     @RequestMapping(value="/assignment", method = RequestMethod.GET)
     public void makeAssignment() {
         assignmentService.makeAssignment();
     }
 
+
+    /**
+     * get assignment summary
+     *
+     * @return list of string
+     */
     @RequestMapping(value="/assignment/summary", method = RequestMethod.GET)
     public List<String> viewAssignment() {
         return assignmentService.getAssignmentSummary();
     }
 
+
+    /**
+     * get Assignment List
+     *
+     * @return Map<WeekNumber, List < Story of Each week>>
+     */
     @RequestMapping(value="/assignments", method = RequestMethod.GET)
     public Map<Integer, List<Story>> getAssignmentList() {
         return assignmentService.getAssignmentList();

@@ -24,6 +24,11 @@ public class AssignmentService {
 
     private static final Integer MAX_DEVELOPER_POINTS_PER_WEEK = 10;
 
+    /**
+     * This method is the most important method.because this method is Heart of appliation
+     *
+     * @return Map<Week number, List < assigned Story of each week>>
+     */
     public Map<Integer, List<Story>> makeAssignment() {
 
         Map<Integer, List<Story>> result = new HashMap<Integer, List<Story>>();
@@ -63,6 +68,12 @@ public class AssignmentService {
         return result;
     }
 
+
+    /**
+     * get Assignment Summary
+     *
+     * @return List of String Of Assignment Summary
+     */
     public List<String> getAssignmentSummary() {
         List<String> result = new ArrayList<String>();
 
@@ -93,6 +104,13 @@ public class AssignmentService {
         return result;
     }
 
+
+    /**
+     * Get Most Available Developer With Available Points For Week
+     *
+     * @param week
+     * @return DeveloperPoints Dto
+     */
     private DeveloperPointsDto getMostAvailableDeveloperWithAvailablePointsForWeek(WeeksEnum week) {
         DeveloperPointsDto mostAvailableDeveloperandAvailablePoint = storyService.getMostAvailableDeveloperIdForStory(week.getValue());
         if (mostAvailableDeveloperandAvailablePoint != null) {
@@ -101,10 +119,25 @@ public class AssignmentService {
         return mostAvailableDeveloperandAvailablePoint;
     }
 
+
+    /**
+     * Get Remaining Points In Week
+     *
+     * @param week           week number
+     * @param developerCount developer count
+     * @return getRemainingPointsInWeek in integer
+     */
     public Integer getRemainingPointsInWeek(WeeksEnum week, Integer developerCount) {
         return (int) ((developerCount * MAX_DEVELOPER_POINTS_PER_WEEK) - this.getAssignedPointsInWeek(week));
     }
 
+
+    /**
+     * get Assigned Points In Week
+     *
+     * @param week week number
+     * @return getAssignedPointsInWeek
+     */
     private Long getAssignedPointsInWeek(WeeksEnum week) {
         Long result = storyService.getEstimatedPointCountForWeek(week.getValue());
         if (result == null) {
@@ -113,6 +146,12 @@ public class AssignmentService {
         return result;
     }
 
+
+    /**
+     * get Assignment List
+     *
+     * @return Map<WeekNumber, List < Story of Each week>>
+     */
     public Map<Integer, List<Story>> getAssignmentList() {
         return storyService.getAssignmentList();
     }

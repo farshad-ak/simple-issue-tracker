@@ -21,11 +21,24 @@ public class StoryController {
     @Autowired
     private StoryService storyService;
 
+
+    /**
+     * find all of stories
+     *
+     * @return
+     */
     @GetMapping(value = "/stories")
     public List<Story> getStories() {
         return storyService.findAll();
     }
 
+
+    /**
+     * create a new story
+     *
+     * @param story story Object
+     * @return created story
+     */
     @PostMapping(value = "/story")
     public ResponseEntity<?> create(@RequestBody Story story) {
 
@@ -44,6 +57,15 @@ public class StoryController {
 
     }
 
+
+    /**
+     * update a story
+     *
+     * @param story   story Object
+     * @param id      id of Story
+     * @param ifMatch Etag
+     * @return updated stroy
+     */
     @PutMapping(value = "/story/{id}")
     public ResponseEntity<?> update(@RequestBody Story story, @PathVariable Long id,
                                     @RequestHeader("If-Match") Integer ifMatch) {
@@ -88,11 +110,24 @@ public class StoryController {
 //        return storyService.save(story);
     }
 
+
+    /**
+     * delete a story by Id
+     *
+     * @param storyId story Id
+     */
     @DeleteMapping(value = "/story/{id}")
     public void delete(@PathVariable(value = "id") Long storyId) {
         storyService.delete(storyId);
     }
 
+
+    /**
+     * get a story by id
+     *
+     * @param storyId
+     * @return found story
+     */
     @GetMapping(value = "/story/{id}")
     public ResponseEntity<?> getStory(@PathVariable(value = "id") Long storyId) {
 
@@ -112,11 +147,23 @@ public class StoryController {
 
     }
 
+
+    /**
+     * get all of story status
+     *
+     * @return story status list
+     */
     @GetMapping(value = "/story/status")
     public HashMap<Integer, String> getStatusMap() {
         return storyService.getStoryStatusMap();
     }
 
+
+    /**
+     * get story Estimated Point List
+     *
+     * @return story Estimated Point List
+     */
     @GetMapping(value = "/story/point")
     public List<Integer> getEstimatedPointMap() {
         return storyService.getEstimatedPointList();
