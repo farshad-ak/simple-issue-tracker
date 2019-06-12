@@ -1,7 +1,6 @@
 package com.farshad.tracker.simpleissuetracker.issue.assign;
 
 import com.farshad.tracker.simpleissuetracker.base.dto.DeveloperPointsDto;
-import com.farshad.tracker.simpleissuetracker.developer.Developer;
 import com.farshad.tracker.simpleissuetracker.developer.DeveloperService;
 import com.farshad.tracker.simpleissuetracker.issue.story.Story;
 import com.farshad.tracker.simpleissuetracker.issue.story.StoryService;
@@ -9,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -31,7 +33,7 @@ public class AssignmentService {
         WeeksEnum currentWeek = WeeksEnum.WEEK_ONE;
         List<Story> storyListForCurrentWeek;
         while (estimatedStories.size() > 0) {
-            Integer remainingPoinsInWeek = this.getRemaningPointsInWeek(currentWeek, developerCount);
+            Integer remainingPoinsInWeek = this.getRemainingPointsInWeek(currentWeek, developerCount);
 
             if (remainingPoinsInWeek > 0) {
                 DeveloperPointsDto developerPoints = this.getMostAvailableDeveloperWithAvailablePointsForWeek(currentWeek);
@@ -99,7 +101,7 @@ public class AssignmentService {
         return mostAvailableDeveloperandAvailablePoint;
     }
 
-    public Integer getRemaningPointsInWeek(WeeksEnum week, Integer developerCount) {
+    public Integer getRemainingPointsInWeek(WeeksEnum week, Integer developerCount) {
         return (int) ((developerCount * MAX_DEVELOPER_POINTS_PER_WEEK) - this.getAssignedPointsInWeek(week));
     }
 
