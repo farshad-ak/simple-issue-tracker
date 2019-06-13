@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StoryController {
 
     private static final Logger logger = LogManager.getLogger(StoryController.class);
